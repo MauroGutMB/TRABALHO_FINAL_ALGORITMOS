@@ -2,12 +2,12 @@
 
 Projeto utilizado como trabalho final do curso de Algoritmos e Programação do curso de Análise e Desenvolvimento de Sistemas do IFPI-CACOR.
 
-## Integrantes: 
-***Mauro Gutemberg***
-***Ray Arthur***
-***Breno Guedes***
-***Iasmin***
-***Gabriel Barreira***
+## Integrantes:  
+***Mauro Gutemberg***  
+***Ray Arthur***  
+***Breno Guedes***  
+***Iasmin***  
+***Gabriel Barreira***  
 
 ---
 
