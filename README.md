@@ -1,4 +1,4 @@
-# 📚 Sistema de Reservas de Voo
+# ✈️ Sistema de Reservas de Voo
 
 Projeto utilizado como trabalho final do curso de Algoritmos e Programação do curso de Análise e Desenvolvimento de Sistemas do IFPI-CACOR.
 
@@ -11,7 +11,7 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 
 ---
 
-## 📂 Estrutura de Pastas
+## 📂 Estrutura de Diretórios
 
 ```
 .
