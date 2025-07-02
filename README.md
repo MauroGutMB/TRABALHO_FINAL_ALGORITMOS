@@ -64,7 +64,7 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 3. **Execute**:
 
    ```bash
-   .main
+   ./main
    ```
 
 4. **Limpe os arquivos gerados**:
