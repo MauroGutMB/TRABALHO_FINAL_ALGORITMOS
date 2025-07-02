@@ -20,11 +20,11 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 │   ├── dbCONN/
 │   │   ├── dbFetch.c
 │   │   └── dbFetch.h
-│   ├── dbFUNC/
-│   │   ├── flights.c
-│   │   ├── flights.h
-│   │   ├── users.c
-│   │   └── users.h
+│   └── dbFUNC/
+│       ├── flights.c
+│       ├── flights.h
+│       ├── users.c
+│       └── users.h
 ├── SQLdata/
 │   ├── data.c
 │   └── data.h
@@ -43,12 +43,12 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 
 ## ⚙️ Como Compilar
 
-1. **Dependências**:
+### Bibliotecas principais
 
-   ```bash
-   ncurses
-   sqlite3
-   ```
+- **GCC** (ou Clang) — compilador C.
+- **ncurses** — interface em modo texto no terminal.
+- **SQLite3** — banco de dados embutido.
+- **make** — compilador automatizado de projetos.
 
 
 2. **Compile o projeto** (na raiz):
