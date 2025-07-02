@@ -16,8 +16,8 @@ const char *textos[] = {
 };
 
 void cabecalhoLogin(int posicao[2]){
-  mvprintw(posicao[0] - 5, posicao[1] - 15, textos[1]);
-  mvprintw(posicao[0] - 7, posicao[1] - 10, textos[0]);
+  mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", textos[1]);
+  mvprintw(posicao[0] - 7, posicao[1] - 10, "%s", textos[0]);
 }
 
 void centralizar(const char *palavras[], int posicao[2]){
@@ -68,7 +68,7 @@ int menuLogin(){
       if(i == seta){
         attron(A_REVERSE);
       }
-      mvprintw(i + posicao[0], posicao[1], opts[i]);
+      mvprintw(i + posicao[0], posicao[1], "%s", opts[i]);
       attroff(A_REVERSE);
 
     }
