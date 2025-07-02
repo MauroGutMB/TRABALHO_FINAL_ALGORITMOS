@@ -3,7 +3,7 @@
 
 int main(){
 
-  printf("This is a C standard aplication prrototype.\n");
+  printf("This is a C standard aplication prototype.\n");
   HelloWorld();
 
   return 0;
