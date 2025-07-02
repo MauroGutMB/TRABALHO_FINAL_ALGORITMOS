@@ -1,8 +1,22 @@
-# Variáveis
+# Compiler e flags
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -lncurses -lsqlite3
+
+# Nome do executável
 EXEC = main
-OBJ = main.o src/funcs.o
+
+# Fontes principais
+SRC = \
+    main.c \
+    src/funcs.c \
+    UI/ui.c \
+    SQLdata/data.c \
+    db/dbCONN/dbFetch.c \
+    db/dbFUNC/flights.c \
+    db/dbFUNC/users.c
+
+# Objetos gerados
+OBJ = $(SRC:.c=.o)
 
 # Regra padrão
 all: $(EXEC)
@@ -11,14 +25,10 @@ all: $(EXEC)
 $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ)
 
-# Compilar main.c
-main.o: main.c src/funcs.h
-	$(CC) $(CFLAGS) -c main.c -o main.o
-
-# Compilar funcs.c
-src/funcs.o: src/funcs.c src/funcs.h
-	$(CC) $(CFLAGS) -c src/funcs.c -o src/funcs.o
+# Regra genérica para compilar cada .c em .o
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Limpeza
 clean:
-	rm -f *.o src/*.o $(EXEC)
+	rm -f $(EXEC) $(OBJ)
