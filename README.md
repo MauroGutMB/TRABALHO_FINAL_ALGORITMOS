@@ -1,6 +1,13 @@
-# 📚 Meu Projeto em C
+# 📚 Sistema de Reservas de Voo
 
-Este projeto é um exemplo simples de como organizar um programa em **C** com múltiplos arquivos e um **Makefile** para automatizar a compilação.
+Projeto utilizado como trabalho final do curso de Algoritmos e Programação do curso de Análise e Desenvolvimento de Sistemas do IFPI-CACOR.
+
+## Integrantes: 
+***Mauro Gutemberg***
+***Ray Arthur***
+***Breno Guedes***
+***Iasmin***
+***Gabriel Barreira***
 
 ---
 
