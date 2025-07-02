@@ -10,13 +10,10 @@ Este projeto é um exemplo simples de como organizar um programa em **C** com m�
 .
 ├── .git/
 ├── Makefile
+├── main.c
 └── src/
-    ├── main.c
     ├── funcs.c
-    ├── funcs.h
-    ├── main      # (executável gerado pelo make)
-    ├── main.o    # (gerado)
-    └── funcs.o   # (gerado)
+    └──funcs.h
 ```
 
 ---
@@ -27,6 +24,10 @@ Este projeto é um exemplo simples de como organizar um programa em **C** com m�
 
    ```bash
    sudo apt install build-essential   # Debian/Ubuntu
+   ```
+
+   ```bash
+   sxcode-select --instal   # MacOS
    ```
 
 2. **Compile o projeto** (na raiz):
@@ -51,28 +52,6 @@ Este projeto é um exemplo simples de como organizar um programa em **C** com m�
 
 ---
 
-## 📄 Como funciona o `Makefile`
-
-- **Compila cada `.c` em `.o`** automaticamente.
-- Liga os objetos no executável final.
-- Guarda tudo dentro da pasta `src/`.
-
----
-
 ## 🗑️ Limpeza
 
 Use `make clean` para remover todos os arquivos objeto (`*.o`) e o executável.
-
----
-
-## ✅ Dicas
-
-- Edite seus arquivos fonte dentro de `src/`.
-- Mantenha o `Makefile` na raiz para organização.
-- Use `-Wall` para ver todos os warnings do compilador.
-
----
-
-## 🚀 Sobre
-
-Este é apenas um exemplo didático. Expanda como quiser! 🔧✨
