@@ -1,1 +1,1 @@
-void tela();
+int menuLogin();

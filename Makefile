@@ -1,6 +1,6 @@
 # Compiler e flags
 CC = gcc
-CFLAGS = -Wall -g -lncurses -lsqlite3
+CFLAGS = -Wall -g -lncursesw -lsqlite3
 
 # Nome do executável
 EXEC = main
