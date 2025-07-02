@@ -50,8 +50,9 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 - **SQLite3** — banco de dados embutido.
 - **make** — compilador automatizado de projetos.
 
+---
 
-2. **Compile o projeto** (na raiz):
+1. **Compile o projeto** (na raiz):
 
    ```bash
    make
@@ -59,13 +60,13 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 
    Isso gera o executável `./main`.
 
-3. **Execute**:
+2. **Execute**:
 
    ```bash
    ./main
    ```
 
-4. **Limpe os arquivos gerados**:
+3. **Limpe os arquivos gerados**:
 
    ```bash
    make clean
