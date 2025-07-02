@@ -43,15 +43,13 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 
 ## ⚙️ Como Compilar
 
-1. **Instale o GCC** (se ainda não tiver):
+1. **Dependências**:
 
    ```bash
-   sudo apt install build-essential   # Debian/Ubuntu
+   ncurses
+   sqlite3
    ```
 
-   ```bash
-   sxcode-select --instal   # MacOS
-   ```
 
 2. **Compile o projeto** (na raiz):
 
@@ -59,7 +57,7 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
    make
    ```
 
-   Isso gera o executável `src/main`.
+   Isso gera o executável `./main`.
 
 3. **Execute**:
 
