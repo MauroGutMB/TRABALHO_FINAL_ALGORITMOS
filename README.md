@@ -41,7 +41,7 @@ Este projeto √© um exemplo simples de como organizar um programa em **C** com m√
 3. **Execute**:
 
    ```bash
-   ./src/main
+   .main
    ```
 
 4. **Limpe os arquivos gerados**:
