@@ -16,11 +16,27 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 ```
 .
 ├── .git/
-├── Makefile
+├── db/
+│   ├── dbCONN/
+│   │   ├── dbFetch.c
+│   │   └── dbFetch.h
+│   ├── dbFUNC/
+│   │   ├── flights.c
+│   │   ├── flights.h
+│   │   ├── users.c
+│   │   └── users.h
+├── SQLdata/
+│   ├── data.c
+│   └── data.h
+├── src/
+│   ├── funcs.c
+│   └── funcs.h
+├── UI/
+│   ├── ui.c
+│   └── ui.h
 ├── main.c
-└── src/
-    ├── funcs.c
-    └──funcs.h
+├── Makefile
+└── README.md
 ```
 
 ---
