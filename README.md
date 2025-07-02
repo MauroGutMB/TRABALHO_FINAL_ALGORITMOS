@@ -26,8 +26,7 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 │       ├── users.c
 │       └── users.h
 ├── SQLdata/
-│   ├── data.c
-│   └── data.h
+│   └── dataAPP.db
 ├── src/
 │   ├── funcs.c
 │   └── funcs.h

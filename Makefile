@@ -10,7 +10,6 @@ SRC = \
     main.c \
     src/funcs.c \
     UI/ui.c \
-    SQLdata/data.c \
     db/dbCONN/dbFetch.c \
     db/dbFUNC/flights.c \
     db/dbFUNC/users.c
