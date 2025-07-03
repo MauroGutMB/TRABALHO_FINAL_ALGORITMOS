@@ -6,18 +6,18 @@
 
 int main(){
 
-  int logado;
+  int admlogin;
 
-  logado = menuAdmin(); 
+  admlogin = menuAdmin(); 
 
   /*
-    'logado' pode receber 0, 1 ou 2:
-    1. Login
-    2. Cadastrar
-    0. Nenhuma ação. Sair do programa.
+    'admlogin' pode receber 1, 2 ou 3:
+    1. Remover Usuario
+    2. Adicionar voo
+    3. Remover voo
   */
 
-  printf("%i\n", logado);
+  printf("%i\n", admlogin);
 
   return 0;
 }

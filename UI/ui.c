@@ -192,11 +192,15 @@ int menuAdmin(){
 
     if(escolha == 0){
       endwin();
-      return 1; // Login
+      return 1; // Remover usuario
     } else if(escolha == 1){
       endwin();
-      return 2; // Cadastrar
+      return 2; // Adicionar Voo
+    } else if(escolha == 2){
+      endwin();
+      return 3; // Remover Voo
     }
+
 
     if(escolha != -1){
       break;
