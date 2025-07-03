@@ -9,6 +9,7 @@ EXEC = main
 SRC = \
     main.c \
     src/funcs.c \
+		src/reservas.c \
     UI/ui.c \
     db/dbCONN/dbFetch.c \
     db/dbFUNC/flights.c \
