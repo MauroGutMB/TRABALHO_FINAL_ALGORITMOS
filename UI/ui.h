@@ -1,1 +1,2 @@
 int menuLogin();
+int menuAdmin();

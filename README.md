@@ -33,7 +33,8 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 ├── UI/
 │   ├── ui.c
 │   └── ui.h
-├── main.c
+├── usuario.c (arquivo principal)
+├── admin.c
 ├── Makefile
 └── README.md
 ```

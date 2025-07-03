@@ -1,28 +1,38 @@
 # Compiler e flags
 CC = gcc
-CFLAGS = -Wall -g -lncursesw -lsqlite3
+CFLAGS = -Wall -g
+LIBS = -lncursesw -lsqlite3
 
-# Nome do executável
-EXEC = main
+# Nome dos executáveis
+MAINEXEC = usuario
+ADMINEXEC = admin
 
-# Fontes principais
-SRC = \
-    main.c \
+# Fontes compartilhadas
+COMMON_SRC = \
     src/funcs.c \
     UI/ui.c \
     db/dbCONN/dbFetch.c \
     db/dbFUNC/flights.c \
     db/dbFUNC/users.c
 
-# Objetos gerados
-OBJ = $(SRC:.c=.o)
+# Fontes específicas
+MAIN_SRC = usuario.c $(COMMON_SRC)
+ADMIN_SRC = admin.c $(COMMON_SRC)
 
-# Regra padrão
-all: $(EXEC)
+# Objetos
+MAIN_OBJ = $(MAIN_SRC:.c=.o)
+ADMIN_OBJ = $(ADMIN_SRC:.c=.o)
 
-# Como gerar o executável
-$(EXEC): $(OBJ)
-	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ)
+# Regra padrão: tudo
+all: $(MAINEXEC) $(ADMINEXEC)
+
+# Como gerar o executável usuario
+$(MAINEXEC): $(MAIN_OBJ)
+	$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ) $(LIBS)
+
+# Como gerar o executável admin
+$(ADMINEXEC): $(ADMIN_OBJ)
+	$(CC) $(CFLAGS) -o $@ $(ADMIN_OBJ) $(LIBS)
 
 # Regra genérica para compilar cada .c em .o
 %.o: %.c
@@ -30,4 +40,4 @@ $(EXEC): $(OBJ)
 
 # Limpeza
 clean:
-	rm -f $(EXEC) $(OBJ)
+	rm -f $(MAINEXEC) $(ADMINEXEC) $(MAIN_OBJ) $(ADMIN_OBJ)

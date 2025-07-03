@@ -2,30 +2,20 @@
 #include <ncurses.h>
 #include <string.h>
 
-#define nOpts 3
 
-const char *opts[nOpts] = {
-  "Login",
-  "Cadastrar",
-  "Sair",
-};
+//
+//
+// ------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------- //
+//
+//                FUNÇÕES GERAIS DE ORGANIZAÇÃO
 
-const char *textos[] = {
-  "SISTEMA DE RESERVA DE VOOS",
-  "Faca login para ter acesso ao sistema"
-};
-
-void cabecalhoLogin(int posicao[2]){
-  mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", textos[1]);
-  mvprintw(posicao[0] - 7, posicao[1] - 10, "%s", textos[0]);
-}
-
-void centralizar(const char *palavras[], int posicao[2]){
+void centralizar(int nPalavras, char *palavras[], int posicao[2]){
 
   int largura = 0;
-  int altura = nOpts;
+  int altura = nPalavras;
 
-  for(int i = 0; i < nOpts; i++){
+  for(int i = 0; i < nPalavras; i++){
     int tempLarg = strlen(palavras[i]);
     if(tempLarg > largura){
       largura = tempLarg;
@@ -40,7 +30,34 @@ void centralizar(const char *palavras[], int posicao[2]){
   posicao[1] = xInicial;
 }
 
+//
+//
+// ------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------- //
+//
+//                                    LOGIN
+
+void cabecalhoLogin(int posicao[2]){
+
+  char *textos[] = {
+    "SISTEMA DE RESERVA DE VOOS",
+    "Faca login para ter acesso ao sistema"
+  };
+
+  mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", textos[1]);
+  mvprintw(posicao[0] - 7, posicao[1] - 10, "%s", textos[0]);
+}
+
+
 int menuLogin(){
+
+  int nOpts = 3;
+
+  char *opts[] = {
+    "Login",
+    "Cadastrar",
+    "Sair"
+  };
 
   initscr();
   noecho();
@@ -51,9 +68,101 @@ int menuLogin(){
   int posicao[2];
   posicao[0] = 1, posicao[1] = 1;
 
-  centralizar(opts, posicao);
+  centralizar(nOpts, opts, posicao);
 
   cabecalhoLogin(posicao);
+
+  int telaMenu = 1;
+
+  int seta = 0;
+  int escolha = -1;
+  int c;
+
+  while(telaMenu){
+
+    for(int i = 0; i < nOpts; i++){
+
+      if(i == seta){
+        attron(A_REVERSE);
+      }
+      mvprintw(i + posicao[0], posicao[1], "%s", opts[i]);
+      attroff(A_REVERSE);
+
+    }
+
+    c = getch();
+
+    switch(c){
+      case KEY_UP: seta = (seta - 1 + nOpts) % nOpts; break;
+      case KEY_DOWN: seta = (seta + 1) % nOpts; break;
+      case 10: escolha = seta; break; // 10 = Enter
+    }
+
+    if(escolha == 0){
+      endwin();
+      return 1; // Login
+    } else if(escolha == 1){
+      endwin();
+      return 2; // Cadastrar
+    }
+
+    if(escolha != -1){
+      break;
+    }
+
+  }
+
+  endwin();
+  return 0;
+
+}
+
+//
+//
+// ------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------- //
+
+
+
+// ------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------- //
+//
+//                                 ADMIN - INICIAL
+
+void cabecalhoAdmin(int posicao[2]){
+
+  char *textos[] = {
+    "SISTEMA DE RESERVA DE VOOS",
+    "Sistema reservado para administradores"
+  };
+
+  mvprintw(posicao[0] - 5, posicao[1] - 11, "%s", textos[1]);
+  mvprintw(posicao[0] - 7, posicao[1] - 6, "%s", textos[0]);
+}
+
+
+int menuAdmin(){
+
+  int nOpts = 3;
+
+  char *opts[] = {
+    "Remover Usuario",
+    "Adicionar Voo",
+    "Remover voo"
+  };
+
+  initscr();
+  noecho();
+  cbreak();
+  keypad(stdscr, TRUE);
+  curs_set(0);
+
+  int posicao[2];
+  posicao[0] = 1, posicao[1] = 1;
+
+  centralizar(nOpts, opts, posicao);
+
+  cabecalhoAdmin(posicao);
 
   int telaMenu = 1;
 
@@ -101,3 +210,8 @@ int menuLogin(){
   return 0;
 
 }
+
+//
+//
+// ------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------- //
