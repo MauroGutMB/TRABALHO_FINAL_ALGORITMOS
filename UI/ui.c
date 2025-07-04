@@ -1,6 +1,7 @@
 #include "ui.h"
 #include <ncurses.h>
 #include <string.h>
+#include "../db/dbCONN/dbFetch.h"
 
 
 //
@@ -229,24 +230,20 @@ void cabecalhoUserLogin(int posicao[2]){
     "Escolha de usuarios"
   };
 
-  mvprintw(posicao[0] - 5, posicao[1] - 7, "%s", textos[1]);
-  mvprintw(posicao[0] - 7, posicao[1] - 2, "%s", textos[0]);
+  mvprintw(posicao[0] - 6, posicao[1] - 13, "%s", textos[1]);
+  mvprintw(posicao[0] - 8, posicao[1] - 8, "%s", textos[0]);
 }
 
 
-int menuUserLogin(){
+int menuUserLogin() {
+  // Define máximo de usuários
+  int maxUsuarios = 50;
+  char nomes[maxUsuarios][50];
 
-  int usuarios = 7;
-
-  char *opts[] = {
-    "Usuario 1",
-    "Usuario 2",
-    "Usuario 3",
-    "Usuario 4",
-    "Usuario 5",
-    "Usuario 6",
-    "Usuario 7"
-  };
+  int totalUsuarios = fetch_all_users(nomes, maxUsuarios);
+  if (totalUsuarios == 0) {
+    return -1;
+  }
 
   initscr();
   noecho();
@@ -254,49 +251,31 @@ int menuUserLogin(){
   keypad(stdscr, TRUE);
   curs_set(0);
 
-  int posicao[2];
-  posicao[0] = 1, posicao[1] = 1;
+  int posicao[2] = {LINES / 2, COLS / 2};
 
-  centralizar(usuarios, opts, posicao);
   cabecalhoUserLogin(posicao);
-
-  int telaMenu = 1;
 
   int seta = 0;
   int escolha = -1;
   int c;
 
-  while(telaMenu){
-
-    for(int i = 0; i < usuarios; i++){
-
-      if(i == seta){
-        attron(A_REVERSE);
-      }
-      mvprintw(i + posicao[0], posicao[1] - 2, "%s", opts[i]);
+  while (1) {
+    for (int i = 0; i < totalUsuarios; i++) {
+      if (i == seta) attron(A_REVERSE);
+      mvprintw(i + LINES / 2, COLS / 2 - 7, "%s", nomes[i]);
       attroff(A_REVERSE);
-
     }
 
     c = getch();
-
-    switch(c){
-      case KEY_UP: seta = (seta - 1 + usuarios) % usuarios; break;
-      case KEY_DOWN: seta = (seta + 1) % usuarios; break;
-      case 10: escolha = seta; break; // 10 = Enter
+    switch (c) {
+      case KEY_UP: seta = (seta - 1 + totalUsuarios) % totalUsuarios; break;
+      case KEY_DOWN: seta = (seta + 1) % totalUsuarios; break;
+      case 10: escolha = seta; break; // Enter
     }
 
-
-    if(escolha != -1){
-      endwin();
-      return escolha;
-    }
-
+    if (escolha != -1) break;
   }
-    
 
   endwin();
-
-  return 0;
-
+  return escolha; // Retorna o índice do usuário escolhido
 }

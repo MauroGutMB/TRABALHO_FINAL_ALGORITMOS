@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "src/funcs.h"
 #include "UI/ui.h"
+#include "db/dbCONN/dbFetch.h"
 
 int main(){
 
