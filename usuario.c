@@ -17,7 +17,12 @@ int main(){
     0. Nenhuma ação. Sair do programa.
   */
 
-  printf("%i\n", logado);
+  if(logado == 1){
+    clear();
+
+    int teste = menuUserLogin();
+    printf("Usuario de Index: %i\n", teste);
+  }
 
   return 0;
 }

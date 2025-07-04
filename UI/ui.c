@@ -44,8 +44,8 @@ void cabecalhoLogin(int posicao[2]){
     "Faca login para ter acesso ao sistema"
   };
 
-  mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", textos[1]);
   mvprintw(posicao[0] - 7, posicao[1] - 10, "%s", textos[0]);
+  mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", textos[1]);
 }
 
 
@@ -219,3 +219,84 @@ int menuAdmin(){
 //
 // ------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------- //
+//
+//                  opção - login
+
+void cabecalhoUserLogin(int posicao[2]){
+
+  char *textos[] = {
+    "LOGIN",
+    "Escolha de usuarios"
+  };
+
+  mvprintw(posicao[0] - 5, posicao[1] - 7, "%s", textos[1]);
+  mvprintw(posicao[0] - 7, posicao[1] - 2, "%s", textos[0]);
+}
+
+
+int menuUserLogin(){
+
+  int usuarios = 7;
+
+  char *opts[] = {
+    "Usuario 1",
+    "Usuario 2",
+    "Usuario 3",
+    "Usuario 4",
+    "Usuario 5",
+    "Usuario 6",
+    "Usuario 7"
+  };
+
+  initscr();
+  noecho();
+  cbreak();
+  keypad(stdscr, TRUE);
+  curs_set(0);
+
+  int posicao[2];
+  posicao[0] = 1, posicao[1] = 1;
+
+  centralizar(usuarios, opts, posicao);
+  cabecalhoUserLogin(posicao);
+
+  int telaMenu = 1;
+
+  int seta = 0;
+  int escolha = -1;
+  int c;
+
+  while(telaMenu){
+
+    for(int i = 0; i < usuarios; i++){
+
+      if(i == seta){
+        attron(A_REVERSE);
+      }
+      mvprintw(i + posicao[0], posicao[1] - 2, "%s", opts[i]);
+      attroff(A_REVERSE);
+
+    }
+
+    c = getch();
+
+    switch(c){
+      case KEY_UP: seta = (seta - 1 + usuarios) % usuarios; break;
+      case KEY_DOWN: seta = (seta + 1) % usuarios; break;
+      case 10: escolha = seta; break; // 10 = Enter
+    }
+
+
+    if(escolha != -1){
+      endwin();
+      return escolha;
+    }
+
+  }
+    
+
+  endwin();
+
+  return 0;
+
+}

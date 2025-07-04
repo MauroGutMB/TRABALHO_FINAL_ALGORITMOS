@@ -19,14 +19,13 @@ Projeto utilizado como trabalho final do curso de Algoritmos e Programação do 
 ├── db/
 │   ├── dbCONN/
 │   │   ├── dbFetch.c
-│   │   └── dbFetch.h
+│   │   ├── dbFetch.h
+│   │   └── dados.db
 │   └── dbFUNC/
 │       ├── flights.c
 │       ├── flights.h
 │       ├── users.c
 │       └── users.h
-├── SQLdata/
-│   └── dataAPP.db
 ├── src/
 │   ├── funcs.c
 │   └── funcs.h
