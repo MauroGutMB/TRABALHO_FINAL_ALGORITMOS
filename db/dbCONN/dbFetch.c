@@ -10,6 +10,12 @@
   TABELA reservas = (assento INT, codigo_voo INT, cpf_usuario STR, codigo_reserva INT)
 */
 
+// 
+// 
+// ------------------------------------------------------------------------ //
+//
+//                         PEGAR TODOS OS USUARIOS
+
 int fetch_all_users(char nomes[][50], int maxUsuarios) {
   sqlite3 *db = NULL;
   sqlite3_stmt *stmt = NULL;

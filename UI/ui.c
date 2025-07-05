@@ -11,24 +11,18 @@
 //
 //                FUNÇÕES GERAIS DE ORGANIZAÇÃO
 
-void centralizar(int nPalavras, char *palavras[], int posicao[2]){
-
-  int largura = 0;
-  int altura = nPalavras;
-
-  for(int i = 0; i < nPalavras; i++){
-    int tempLarg = strlen(palavras[i]);
-    if(tempLarg > largura){
-      largura = tempLarg;
+void centralizar(int n_palavras, char *palavras[], int posicao[2]) {
+    int largura_max = 0;
+    for (int i = 0; i < n_palavras; i++) {
+        int largura_atual = strlen(palavras[i]);
+        if (largura_atual > largura_max) {
+            largura_max = largura_atual;
+        }
     }
-  }
-
-  int xInicial = (COLS - largura) / 2;
-  int yInicial = (LINES - altura) / 2;
-
-  // parametros do mvprintw -> (y, x, string)
-  posicao[0] = yInicial;
-  posicao[1] = xInicial;
+    int x_inicial = (COLS - largura_max) / 2;
+    int y_inicial = (LINES - n_palavras) / 2;
+    posicao[0] = y_inicial;
+    posicao[1] = x_inicial;
 }
 
 //
@@ -38,15 +32,13 @@ void centralizar(int nPalavras, char *palavras[], int posicao[2]){
 //
 //                                    LOGIN
 
-void cabecalhoLogin(int posicao[2]){
-
-  char *textos[] = {
-    "SISTEMA DE RESERVA DE VOOS",
-    "Faca login para ter acesso ao sistema"
-  };
-
-  mvprintw(posicao[0] - 7, posicao[1] - 10, "%s", textos[0]);
-  mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", textos[1]);
+void cabecalhoLogin(int posicao[2]) {
+    const char *cabecalhos[] = {
+        "SISTEMA DE RESERVA DE VOOS",
+        "Faca login para ter acesso ao sistema"
+    };
+    mvprintw(posicao[0] - 7, posicao[1] - 10, "%s", cabecalhos[0]);
+    mvprintw(posicao[0] - 5, posicao[1] - 15, "%s", cabecalhos[1]);
 }
 
 
