@@ -1,7 +1,6 @@
 int fetch_all_users(char nomes[][50], int maxUsuarios);
 
 typedef struct {
-  int id;
   char nome[50];
   char cpf[20];
   int idade;
@@ -21,9 +20,3 @@ typedef struct {
   char cpf_usuario[20];
   int codigo_reserva;
 } Reserva;
-
-// Protótipos:
-int fetch_all_usuarios(Usuario usuarios[], int maxUsuarios);
-int fetch_all_voos(Voo voos[], int maxVoos);
-int fetch_all_reservas(Reserva reservas[], int maxReservas);
-
