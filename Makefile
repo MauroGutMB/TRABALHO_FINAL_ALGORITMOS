@@ -10,7 +10,6 @@ ADMINEXEC = admin
 # Fontes compartilhadas
 COMMON_SRC = \
     src/funcs.c \
-		src/reservas.c \
     UI/ui.c \
     db/dbCONN/dbFetch.c \
     db/dbFUNC/flights.c \
