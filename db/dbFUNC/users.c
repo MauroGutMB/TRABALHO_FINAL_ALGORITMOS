@@ -1,4 +1,5 @@
 #include "../dbCONN/dbFetch.h"
+#include "../dbFUNC/users.h"
 #include <sqlite3.h>
 #include <stdio.h>
 #include <string.h>

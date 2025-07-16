@@ -5,12 +5,18 @@
 #include <sqlite3.h>
 #include <stdio.h>
 
+char usuarios[50][50];
+
+
 int main() {
+
 
   int logado;
   int tela = 1;
 
   while (tela) {
+
+    fetch_all_users(usuarios, 50);
 
     clear();
     logado = menuLogin();
@@ -30,7 +36,7 @@ int main() {
       clear();
 
       int teste = menuUserLogin();
-      printf("Usuario de Index: %i\n", teste);
+      printf("Usuario de Index: %i\n>>>>> %s\n", teste, usuarios[teste]);
     }
 
     if (logado == 2) {

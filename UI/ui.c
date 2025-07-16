@@ -1,5 +1,6 @@
 #include "ui.h"
 #include "../db/dbFUNC/users.h"
+#include "../db/dbFUNC/flights.h"
 #include <ncurses.h>
 #include <sqlite3.h>
 #include <string.h>
@@ -184,6 +185,82 @@ void menuCadastro() {
 // -------------------------------------------------------------------------------
 // //
 //
+//                        ADMIN - ADICIONAR VOO
+
+// Voo novo_voo(char origem[], char destino[], char partida[], char chegada[], int codigo_voo) {
+
+void menuAddVoo() {
+  char origem[50];
+  char destino[50];
+  char partida[50];
+  char chegada[50];
+  int codigo_voo;
+
+  initscr(); // Inicializa ncurses
+  cbreak();  // Desabilita buffer de linha
+  noecho();  // Não mostra os caracteres digitados
+  curs_set(0);
+  keypad(stdscr, TRUE); // Habilita teclas especiais
+
+  // Título
+  mvprintw(-4, COLS - 20 / 2, "INSERCAO DE VOOS");
+
+  // Origem
+  mvprintw(5, (COLS - 20) / 2, "Origem do voo: ");
+  echo();
+  getnstr(origem, 50);
+  noecho();
+
+  // Destino
+  mvprintw(7, (COLS - 20) / 2, "Destino do voo: ");
+  echo();
+  getnstr(destino, 50);
+  noecho();
+
+  // Horario de partida
+  mvprintw(9, (COLS - 20) / 2, "Horario de partida do voo: ");
+  echo();
+  getnstr(partida, 50);
+  noecho();
+
+  // Horario de chegada
+  mvprintw(11, (COLS - 20) / 2, "Horario de chegada do voo: ");
+  echo();
+  getnstr(chegada, 50);
+  noecho();
+
+
+  // Codigo
+  mvprintw(13, (COLS - 20) / 2, "Insira o codigo do voo: ");
+  echo();
+  scanw("%i", &codigo_voo);
+  noecho();
+
+  clear();
+  mvprintw(5, (COLS - 20) / 2, "Dados Inseridos");
+  mvprintw(6, (COLS - 20) / 2, "Origem : %s", origem);
+  mvprintw(7, (COLS - 20) / 2, "Destino  : %s", destino);
+  mvprintw(8, (COLS - 20) / 2, "Horario de partida: %s", partida);
+  mvprintw(9, (COLS - 20) / 2, "Horario de chegada  : %s", chegada);
+  mvprintw(10, (COLS - 20) / 2, "Codigo do voo: %i", codigo_voo);
+
+  mvprintw(12, (COLS - 20) / 2, "Pressione 'c' para confirmar.");
+  mvprintw(13, (COLS - 20) / 2, "Pressione qualquer botao para cancelar.");
+  char c = getch();
+
+  if (c == 'c') {
+   novo_voo(origem, destino, partida, chegada, codigo_voo); 
+  }
+
+  clear();
+  endwin();
+}
+//
+// -------------------------------------------------------------------------------
+// //
+// -------------------------------------------------------------------------------
+// //
+//
 //                        ADMIN - REMOVER USUARIO
 
 
@@ -271,6 +348,91 @@ void menuDelUsuario() {
   endwin();
 }
 
+// 
+//
+// -------------------------------------------------------------- //
+//
+//                  ADMIN - REMOVER VOO
+
+void menuDelVoo() {
+
+  int menuUs = 1;
+
+  int maxVoos = 50;
+  int codigos[maxVoos];
+
+  int totalVoos = fetch_all_voos(codigos, maxVoos);
+
+  if(totalVoos == 0){
+    menuUs = 0;
+    clear();
+    endwin();
+  }
+
+  int seta = 0;
+  int escolha = -1;
+  int c = 0;
+
+  initscr();
+  cbreak();
+  noecho();
+  curs_set(0);
+  keypad(stdscr, TRUE);
+
+
+
+  while (menuUs) {
+
+    escolha = -1;
+
+    clear();
+
+    // atualiza a func
+    totalVoos = fetch_all_voos(codigos, maxVoos);
+
+    mvprintw(6, COLS / 2 - 15, "Selecione um usuario para ser deletado");
+
+    for (int i = 0; i < totalVoos; i++) {
+      if (i == seta)
+        attron(A_REVERSE);
+      mvprintw(i + LINES / 2 - 6, COLS / 2 - 7, "%i", codigos[i]);
+      attroff(A_REVERSE);
+    }
+
+    attron(A_UNDERLINE);
+    mvprintw(totalVoos + LINES / 2 - 5, COLS / 2 - 10, "aperte 's' para sair.");
+    attroff(A_UNDERLINE);
+
+    c = getch();
+    switch (c) {
+    case KEY_UP:
+      seta = (seta - 1 + totalVoos) % totalVoos;
+      break;
+    case KEY_DOWN:
+      seta = (seta + 1) % totalVoos;
+      break;
+    case 10:
+      escolha = seta;
+      break; // Enter
+    case 115:
+      menuUs = 0;
+      clear();
+      endwin();
+      break;
+    }
+
+
+    if(escolha != -1){
+
+      // char cpf_del[50];
+
+      ////////////////////// ADICIONAR
+
+    }
+  }
+  clear();
+  endwin();
+}
 //
 // -------------------------------------------------------------------------------
 // //

@@ -15,6 +15,7 @@ int main() {
     1. Remover Usuario
     2. Adicionar voo
     3. Remover voo
+    4. Sair
   */
 
   while (telaAdm) {
@@ -23,14 +24,11 @@ int main() {
 
     printf("%i\n", admlogin);
 
-    if (admlogin == 1) {
-      clear();
-      menuDelUsuario();
-    }
-
-    if(admlogin == 4){
-      telaAdm = 0;
-      clear();
+    switch(admlogin){
+      case 1: clear(); menuDelUsuario(); break;
+      case 2: clear(); menuAddVoo(); break;
+      case 3: clear(); menuDelVoo(); break;
+      case 4: clear(); telaAdm = 0; break;
     }
 
   }
